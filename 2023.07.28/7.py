@@ -40,18 +40,23 @@ list_of_dicts = [
         'Тольятти': 2
     }
 ]
+# ПЕРЕИМЕНОВАТЬ: множество (матем.) — set
 plenty = set()
 for i in range(len(list_of_dicts)):
     plenty = plenty | set(list_of_dicts[i])
-plenty_key = dict.fromkeys(sorted(plenty, reverse = False), set())
+# ИСПОЛЬЗОВАТЬ везде: PEP 8 не рекомендует добавлять пробелы вокруг = при передаче аргументов по ключу
+plenty_key = dict.fromkeys(sorted(plenty, reverse=False), set())
 
+# ПЕРЕИМЕНОВАТЬ: города — cities; словарь (python) — dict; словарь городов — cities_dict
 for list_ in list_of_dicts:
+    # ПЕРЕИМЕНОВАТЬ: город — city
     for key, val in plenty_key.items():
         try:
             if list_[key]:
                 try:
                     plenty_key[key] = plenty_key[key] | {str(list_[key])}
-                    #print(plenty_key[key])
+                    # ИСПОЛЬЗОВАТЬ везде: PEP 8 рекомендует добавлять пробелы после символа # — в большинстве редакторов кода, включая Notepad++, это делает команда "Вкл./Выкл. комментарий"
+                    # print(plenty_key[key])
                 except KeyError:
                     plenty_key[key]
         except KeyError:
@@ -60,7 +65,7 @@ for list_ in list_of_dicts:
 for k, v in plenty_key.items():
     print(f'{k}: {v}')
 
-# C:\Users\Кеша\Desktop\my_life\Б. Прогаммирование\Top-Piton\HomeWork_Python_TOP\HW\2023.07.28>python -i 7.py
+
 # Барнаул: {'1', '4'}
 # Владивосток: {'3', '1'}
 # Волгоград: {'2', '9'}
@@ -80,4 +85,4 @@ for k, v in plenty_key.items():
 # Уфа: {'3', '7'}
 # Хабаровск: {'2'}
 # Ярославль: {'1'}
-# >>>
+

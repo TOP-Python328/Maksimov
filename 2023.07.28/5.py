@@ -1,5 +1,3 @@
-word = input('введите слово: ')
-
 scores_letters = {
     1: 'АВЕИНОРСТ',
     2: 'ДКЛМПУ',
@@ -11,18 +9,22 @@ scores_letters = {
     15: 'Ъ'
 }
 
+word = input('введите слово: ')
+# ПЕРЕИМЕНОВАТЬ: очки, счёт (в игре) — score, scores, points
 point = 0
-
+# ПЕРЕИМЕНОВАТЬ: очки, счёт (в игре) — score, scores, points
 for k in list(scores_letters.keys()):
+    # ПЕРЕИМЕНОВАТЬ: символ (текста) — character, char, ch
     for n in list(word):
-        gen_point = ({n.upper()} < set(scores_letters[k]))
+        # ПЕРЕИМЕНОВАТЬ: is_char_in_letters
+        # ИСПОЛЬЗОВАТЬ везде: круглые скобки используются для литерала кортежа, изменения порядка вычисления выражений, вызова функций и записи составного выражения на нескольких строчках — больше нигде и никак
+        gen_point = {n.upper()} < set(scores_letters[k])
         if gen_point == True:
             point += int(k)
 print(f'\n{point}\n')
 
-#C:\Users\Кеша\Desktop\my_life\Б. Прогаммирование\Top-Piton\HomeWork_Python_TOP\HW\2023.07.28>python -i 5.py
-#введите слово: синхрофазотрон
 
-#29
+# введите слово: синхрофазотрон
+#
+# 29
 
-#>>>
