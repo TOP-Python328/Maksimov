@@ -5,23 +5,25 @@ midle_file = []
 final_file = []
 
 # ПЕРЕИМЕНОВАТЬ: файл — file
-for fi_ in files:
-    midle_file.append(fi_)
-    if midle_file.count(fi_) > 1:
+# Замечания исправлены__________________________________
+for file in files:
+    midle_file.append(file)
+    if midle_file.count(file) > 1:
         # ПЕРЕИМЕНОВАТЬ: счётчик — counter, cnt
-        c = midle_file.count(fi_)
-        fi_ = list(fi_)
-        fi_.reverse()
+        # Замечания исправлены__________________________________
+        counter = midle_file.count(file)
+        file = list(file)
+        file.reverse()
         point_indicator = False
-        for i in range(len(fi_)):
-            if fi_[i-1] == '.' and point_indicator == False:
+        for i in range(len(file)):
+            if file[i-1] == '.' and point_indicator == False:
                 point_indicator = True
-                fi_[i-1] = '_' + str(c) + '.'
-        fi_.reverse()
-        fi_ = ''.join(fi_)
-        final_file.append(fi_)
+                file[i-1] = '_' + str(counter) + '.'
+        file.reverse()
+        file = ''.join(file)
+        final_file.append(file)
     else:
-        final_file.append(fi_)
+        final_file.append(file)
 
 for ff in final_file:
     print(ff)
