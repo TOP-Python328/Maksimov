@@ -1,17 +1,20 @@
 user_mail = input('введите адрес электронной почты: ')
 
 # ПЕРЕИМЕНОВАТЬ: символ '@' официально называется "коммерческий ат" (at sign), "собака" — это русское жаргонное название, к dog не имеющее ни малейшего отношения
-availability_dog = 'no'
+#Замечание устранен___________________________________________________________________________________________
+availability_at_sign = 'no'
 # ПЕРЕИМЕНОВАТЬ: точка (знак препинания) — dot
-availability_point = 'нет'
+#Замечание устранен___________________________________________________________________________________________
+dot = 'нет'
 # ПЕРЕИМЕНОВАТЬ: символ (текста) — character, char, ch
-for mail_simvol in list(user_mail):
-    if mail_simvol in '@':
-        availability_dog = 'yes'
-    if mail_simvol in '.' and availability_dog == 'yes':
-        availability_point = 'да'
+#Замечание устранен___________________________________________________________________________________________
+for char in user_mail:
+    if char in '@':
+        availability_at_sign = 'yes'
+    if char in '.' and availability_at_sign == 'yes':
+        dot = 'да'
 
-print(f'\n{availability_point}\n')
+print(f'\n{dot}\n')
 
 
 # введите адрес электронной почты: sgd@ya.ru
