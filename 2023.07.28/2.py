@@ -1,7 +1,6 @@
 fruits = list()
 fruits_answer = str()
-n = 0
-while n != 'stop_cycle':
+while True:
     fruit = input('название фрукта: ')
     if fruit != '':
         fruits.append(fruit)
@@ -15,7 +14,7 @@ while n != 'stop_cycle':
             if i < len(fruits) - 2:
                 fruits_answer += (fruits[i] + ', ')
             i += 1
-        n = 'stop_cycle'
+        break
             
 print(f'\n{fruits_answer}\n')
 
