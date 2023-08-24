@@ -40,31 +40,23 @@ list_of_dicts = [
         'Тольятти': 2
     }
 ]
-# ПЕРЕИМЕНОВАТЬ: множество (матем.) — set
-# Замечания исправлены______________________________________________________________________________
-Set = set()
+cities_set = set()
 for i in range(len(list_of_dicts)):
-    Set = Set | set(list_of_dicts[i])
-# ИСПОЛЬЗОВАТЬ везде: PEP 8 не рекомендует добавлять пробелы вокруг = при передаче аргументов по ключу
-# ?????___Это замечание не понял__?????____________________________________________________________
-Set_key = dict.fromkeys(sorted(Set, reverse=False), set())
+    cities_set = cities_set | set(list_of_dicts[i])
+cities_values = dict.fromkeys(sorted(cities_set, reverse=False), set())
 
-# ПЕРЕИМЕНОВАТЬ: города — cities; словарь (python) — dict; словарь городов — cities_dict
-# Замечания исправлены______________________________________________________________________________
-for cities in list_of_dicts:
-    # ПЕРЕИМЕНОВАТЬ: город — city
-    # Замечания исправлены______________________________________________________________________________
-    for city, val in Set_key.items():
+for cities_dict in list_of_dicts:
+    for city, val in cities_values.items():
         try:
-            if cities[city]:
+            if cities_dict[city]:
                 try:
-                    Set_key[city] = Set_key[city] | {str(cities[city])}
+                    cities_values[city] = cities_values[city] | {str(cities_dict[city])}
                 except KeyError:
-                    Set_key[city]
+                    cities_values[city]
         except KeyError:
-            Set_key[city]
+            cities_values[city]
             
-for k, v in Set_key.items():
+for k, v in cities_values.items():
     print(f'{k}: {v}')
 
 
@@ -88,3 +80,6 @@ for k, v in Set_key.items():
 # Хабаровск: {'2'}
 # Ярославль: {'1'}
 
+
+# ИСПОЛЬЗОВАТЬ везде: PEP 8 не рекомендует добавлять пробелы вокруг = при передаче аргументов по ключу
+# КОММЕНТАРИЙ: когда аргумент передаётся в функцию с указанием параметра, например print(end='\n\n'), то это называется передачей аргумента по ключу — пробелы вокруг символа '=' в таком случае на ставятся

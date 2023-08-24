@@ -4,13 +4,9 @@ files = list(files.split('; '))
 midle_file = []
 final_file = []
 
-# ПЕРЕИМЕНОВАТЬ: файл — file
-# Замечания исправлены__________________________________
 for file in files:
     midle_file.append(file)
     if midle_file.count(file) > 1:
-        # ПЕРЕИМЕНОВАТЬ: счётчик — counter, cnt
-        # Замечания исправлены__________________________________
         counter = midle_file.count(file)
         file = list(file)
         file.reverse()
