@@ -41,28 +41,30 @@ list_of_dicts = [
     }
 ]
 # ПЕРЕИМЕНОВАТЬ: множество (матем.) — set
-plenty = set()
+# Замечания исправлены______________________________________________________________________________
+Set = set()
 for i in range(len(list_of_dicts)):
-    plenty = plenty | set(list_of_dicts[i])
+    Set = Set | set(list_of_dicts[i])
 # ИСПОЛЬЗОВАТЬ везде: PEP 8 не рекомендует добавлять пробелы вокруг = при передаче аргументов по ключу
-plenty_key = dict.fromkeys(sorted(plenty, reverse=False), set())
+# ?????___Это замечание не понял__?????____________________________________________________________
+Set_key = dict.fromkeys(sorted(Set, reverse=False), set())
 
 # ПЕРЕИМЕНОВАТЬ: города — cities; словарь (python) — dict; словарь городов — cities_dict
-for list_ in list_of_dicts:
+# Замечания исправлены______________________________________________________________________________
+for cities in list_of_dicts:
     # ПЕРЕИМЕНОВАТЬ: город — city
-    for key, val in plenty_key.items():
+    # Замечания исправлены______________________________________________________________________________
+    for city, val in Set_key.items():
         try:
-            if list_[key]:
+            if cities[city]:
                 try:
-                    plenty_key[key] = plenty_key[key] | {str(list_[key])}
-                    # ИСПОЛЬЗОВАТЬ везде: PEP 8 рекомендует добавлять пробелы после символа # — в большинстве редакторов кода, включая Notepad++, это делает команда "Вкл./Выкл. комментарий"
-                    # print(plenty_key[key])
+                    Set_key[city] = Set_key[city] | {str(cities[city])}
                 except KeyError:
-                    plenty_key[key]
+                    Set_key[city]
         except KeyError:
-            plenty_key[key]
+            Set_key[city]
             
-for k, v in plenty_key.items():
+for k, v in Set_key.items():
     print(f'{k}: {v}')
 
 
