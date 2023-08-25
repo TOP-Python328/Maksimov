@@ -1,25 +1,25 @@
-import math
 def taxi_cost(path_length: int, waiting_time: int = 0) -> int | None:
-    if path_length < 0:
-        return None
+    
+    price_for_150_meters = (path_length / 150) * 6 # расчет дополнительных 6-ти рублей за 150 метров поездки;
+    the_price_for_waiting = waiting_time * 3 # расчет дополнительных 3-х рублей за минуту ожидания;
+    if path_length == 0: # штраф 80 рублей за отмененный заказ;
+        fine = 80
     else:
-        price_for_150_meters = int(math.floor(path_length / 150) * 6)
-        the_price_for_waiting = int(waiting_time * 3)
-        if path_length == 0:
-            fine = 80
-        else:
-            fine = 0
-        return (80 + price_for_150_meters + the_price_for_waiting + fine)
+        fine = 0
+    
+    if path_length < 0: # Проверка на отрицательный ввод длины маршрута;
+        return None
+    else: # Итоговый расчет стоимости маршрута;
+        return round(80 + price_for_150_meters + the_price_for_waiting + fine)
         
-#C:\Users\Кеша\Desktop\my_life\Б. Прогаммирование\Top-Piton\HomeWork_Python_TOP\HW\2023.08.18>python -i 2.py
-#>>> taxi_cost(1500)
-#140
-#>>> taxi_cost(2560)
-#182
-#>>> taxi_cost(0, 5)
-#175
-#>>> taxi_cost(42130, 8)
-#1784
-#>>> print(taxi_cost(-300))
-#None
-#>>>
+# >>> taxi_cost(1500)
+# 140
+# >>> taxi_cost(2560)
+# 182
+# >>> taxi_cost(0, 5)
+# 175
+# >>> taxi_cost(42130, 8)
+# 1789
+# >>> print(taxi_cost(-300))
+# None
+# >>>
