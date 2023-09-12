@@ -1,4 +1,5 @@
 def math_function_resolver(math_fun: 'function', *x: tuple[int], strings: bool=False) -> list[float] | list[str]:
+    """Функция которая вычисляет округлённые значения для различных математических функций"""
     result = []
     for num in x:
         result.append(round(math_fun(num), 2))
