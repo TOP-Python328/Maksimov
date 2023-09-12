@@ -19,7 +19,7 @@ nominals = {
 result_nominals = dict()
 
 def pick_resistors(resistance: int) -> dict[str: tuple[int]] | None:
-"""Функция которая подбирает ближайшие к переданному номиналы сопротивления из всех рядов сопротивлений"""
+    """Функция которая подбирает ближайшие к переданному номиналы сопротивления из всех рядов сопротивлений"""
     if resistance < 100 or resistance > 999:
         return print(None)
     for key, val in nominals.items():
