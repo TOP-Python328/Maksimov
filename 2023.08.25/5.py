@@ -1,4 +1,5 @@
 def logger(func_obj: 'function'):
+    """Декоратор который в стандартном потоке вывода ведёт журнал вызовов декорируемой функции"""
     def wrapper(*args, **kwargs): 
         name_fun = func_obj.__name__ # Имя функции
     
