@@ -2,6 +2,7 @@ from functools import wraps
 from time import sleep
 
 def exception_delay_repeat(func: 'function') -> 'function':
+    """Декоратор который спустя полсекунды повторяет вызов декорируемой функции в случае возникновения исключения."""
     @wraps(func)
     def wrapper():
         try:
