@@ -16,17 +16,20 @@ nominals = {
     )
 }
 
+# УДАЛИТЬ: этот словарь должен быть объявлен в теле функции, иначе каждый вызов функции будет изменять и возвращать один и тот же объект — обычно, это нежелательно
 result_nominals = dict()
 
 def pick_resistors(resistance: int) -> dict[str: tuple[int]] | None:
     """Функция которая подбирает ближайшие к переданному номиналы сопротивления из всех рядов сопротивлений"""
     if resistance < 100 or resistance > 999:
+        # ИСПРАВИТЬ: функция не должна самостоятельно выводить что-либо в stdout
         return print(None)
     for key, val in nominals.items():
         min_value = min(abs(r - resistance) for r in val)
         result_nominals[key] = tuple(filter(lambda R: abs(R - resistance) == min_value, val))
     return result_nominals
-    
+
+
 # >>> pick_resistors(112)
 # {'E6': (100,), 'E12': (120,), 'E24': (110,), 'E48': (110,), 'E96': (113,)}
 # >>> pick_resistors(549)
@@ -35,3 +38,6 @@ def pick_resistors(resistance: int) -> dict[str: tuple[int]] | None:
 # None
 # >>> pick_resistors(1000)
 # None
+
+
+# ИТОГ: хорошо — 4/5

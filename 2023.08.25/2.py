@@ -3,9 +3,12 @@ def deck() -> 'generator':
     suits = ('черви', 'бубны', 'пики', 'трефы')
     for suit in suits:
         for num in range(2, 15):
-            yield (num, suit)
-            
+            # ИСПОЛЬЗОВАТЬ: в данном случае скобки можно опустить
+            yield num, suit
+
+
 cards = deck()
+
 
 # >>> list(deck())[::13]
 # [(2, 'черви'), (2, 'бубны'), (2, 'пики'), (2, 'трефы')]
@@ -118,3 +121,6 @@ cards = deck()
 # Traceback (most recent call last):
   # File "<stdin>", line 1, in <module>
 # StopIteration
+
+
+# ИТОГ: отлично — 3/3
