@@ -1,16 +1,24 @@
+# ПЕРЕИМЕНОВАТЬ: в третьем параметре тоже должен был остаться идентификатор numbers — идея заключается как раз в том, чтобы не создавать лишних идентификаторов
 def central_tendency(number_one: float, number_two: float, *numbers_: float) -> dict[str, float]:
     """Функция вычисляет основные меры центральной тенденции для некоторого количества чисел"""
     numbers = [number_one, number_two, *numbers_]
-    central_tendency_result = {'median': float,
-                               'arithmetic': float,
-                               'geometric': float,
-                               'harmonic': float,
-                               }
+    central_tendency_result = {
+        # КОММЕНТАРИЙ: если вы подразумевали аннотацию, то для словаря она работает не так — здесь вы каждому ключу сопоставили объект класса float
+        'median': float,
+        'arithmetic': float,
+        'geometric': float,
+        'harmonic': float,
+    }
+    # КОММЕНТАРИЙ: для подробного аннотирования словаря используется специальный дженерик TypedDict из модуля typing
+
     # расчет медианы;
+    # ИСПРАВИТЬ: обратная сортировка (по убыванию) необязательна
     numbers = sorted(numbers, reverse=True)
+    # ИСПРАВИТЬ: многократные вычисления одних и тех же значений избыточны, заметно замедляют выполнение функции — речь про вычисление количества элементов
     if len(numbers) % 2 == 0:
+        # ИСПРАВИТЬ: опять же, вместо того, чтобы многократно вызывать в дальнейшем функцию int(), вы могли бы здесь использовать оператор целочисленного деления
         num_s = len(numbers) / 2
-        central_tendency_result['median'] = (numbers[int(num_s)] + numbers[int((num_s) - 1)]) / 2
+        central_tendency_result['median'] = (numbers[int(num_s)] + numbers[int(num_s-1)]) / 2
     else:
         central_tendency_result['median'] = float(numbers[len(numbers) // 2])
     # расчет среднюю арифметическую;
@@ -47,3 +55,6 @@ def central_tendency(number_one: float, number_two: float, *numbers_: float) -> 
 # >>>
 # >>> central_tendency(1, 0, -1)
 # {'median': 0.0, 'arithmetic': 0.0, 'geometric': 0.0, 'harmonic': 0}
+
+
+# ИТОГ: удовлетворительно — 3/6

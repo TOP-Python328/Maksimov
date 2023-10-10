@@ -2,14 +2,13 @@ def taxi_cost(path_length: int, waiting_time: int = 0) -> int | None:
     """Функция вычисляет стоимость поездки на такси"""
     if path_length < 0 or waiting_time < 0: # Проверка на отрицательный ввод длины маршрута
         return None
-        
     price_for_150_meters = (path_length / 150) * 6 # расчет дополнительных 6-ти рублей за 150 метров поездки
-    
     the_price_for_waiting = waiting_time * 3 # расчет дополнительных 3-х рублей за минуту ожидания
-    
-    if path_length == 0: fine = 80 # штраф 80 рублей за отмененный заказ
-    else: fine = 0
-
+    # УДАЛИТЬ: не записывайте блок на одной строчке с заголовком, это ухудшает читаемость кода
+    # if path_length == 0: fine = 80 # штраф 80 рублей за отмененный заказ
+    # else: fine = 0
+    # ИСПОЛЬЗОВАТЬ: есть более удобные способы сократить запись, например, использование тернарного оператора
+    fine = 0 if path_length else 80
     return round(80 + price_for_150_meters + the_price_for_waiting + fine)
 
 
@@ -25,3 +24,8 @@ def taxi_cost(path_length: int, waiting_time: int = 0) -> int | None:
 # None
 # >>> print(taxi_cost(1500, -10))
 # None
+
+
+# ИТОГ: хорошо — 3/4
+
+# КОММЕНТАРИЙ: минус балл за несоблюдение требований оформления в соответствии с PEP 8 — несмотря на многочисленные указания и примеры, предоставленные преподавателем
